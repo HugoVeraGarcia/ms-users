@@ -1,0 +1,140 @@
+openapi: 3.0.1
+info: 
+  title: MS AUTH
+  description: Se encarga de gestionar accesos a usuarios a traves de tokens jwt y cookies
+  version: 1.0.0
+servers: 
+- url: http://0.0.0.0:8000/v1
+tags:
+- name: status
+  description: Da a conocer el estado actual del servidor.
+
+- name: register
+  description: ...
+
+- name: login
+  description: ..
+
+- name: user
+  description: ...
+
+- name: logout
+  description: ..
+
+paths:
+  /status:
+    get:
+      tags: 
+      - status
+      summary: Notifica que el servidor se encuentra activo. 
+      responses:
+        200:
+          description: 'server is running and OK'
+
+  /register:
+    post:
+      tags: 
+      - register
+      summary: ..
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BodyUserPost'
+        required: true
+
+      responses:
+        200:
+          description: 'server is running and OK'
+
+  /login:
+    post:
+      tags: 
+      - login
+      summary: ...
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BodyUserPostLogin'
+        required: true
+
+      responses:
+        
+        200:
+          $ref: '#/components/responses/TokenResponse'
+
+  /user:
+    get:
+      tags: 
+      - user
+      summary: ...
+      responses:
+        200:
+          $ref: '#/components/responses/UserResponse'
+      security:
+        - cookieAuth: []
+        
+
+
+
+components:
+  responses:
+    UserResponse:
+      description: ...
+      content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BodyUserGETRetrieve'
+    
+    Unauthorized:
+      description: ...
+
+    TokenResponse:
+      description: ...
+      content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenResponse'
+          Set-cookie:
+            schema:
+              $ref: '#/components/schemas/TokenResponse'
+
+  schemas:
+    BodyUserPost:
+      type: object
+      properties:
+        name: 
+          type: string
+        email: 
+          type: string      
+        password: 
+          type: string
+    BodyUserPostLogin:
+      type: object
+      properties:
+        email: 
+          type: string      
+        password: 
+          type: string
+    BodyUserGETRetrieve:
+      type: object
+      properties:
+        id: 
+          type: integer    
+        name: 
+          type: string
+        email: 
+          type: string
+    TokenResponse:
+      type: object
+      properties:
+        jwt: 
+          type: string      
+
+  securitySchemes:
+    cookieAuth: 
+    # arbitrary name for the security scheme; will be used in the "security" key later
+      type: apiKey
+      in: cookie
+      name: jwt  # cookie _

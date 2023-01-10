@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "30e12783-8ca5-4d2f-b4e9-94cac57c52e2",
+		"name": "MS AUTH",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21528330"
+	},
+	"item": [
+		{
+			"name": "status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{secret_enpoint}}v1/status",
+					"host": [
+						"{{secret_enpoint}}v1"
+					],
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"j-blanquicett@academlo.com\",\n    \"name\":\"Jorge\",\n    \"password\":\"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{secret_enpoint}}v1/register",
+					"host": [
+						"{{secret_enpoint}}v1"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"j-blanquicett@academlo.com\",\n    \"password\": \"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{secret_enpoint}}v1/login",
+					"host": [
+						"{{secret_enpoint}}v1"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{secret_enpoint}}v1/user",
+					"host": [
+						"{{secret_enpoint}}v1"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{secret_enpoint}}v1/logout",
+					"host": [
+						"{{secret_enpoint}}v1"
+					],
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "secret_enpoint",
+			"value": "http://0.0.0.0:8000/"
+		}
+	]
+}
